@@ -1,0 +1,123 @@
+.contenedor-subtemas {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+
+.header-subtemas {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.btn-volver {
+  background: #444;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.mensaje-info {
+  background: #f5f5f5;
+  padding: 10px;
+  border-left: 4px solid #1976d2;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.crear-subtema {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.crear-subtema input {
+  flex: 1;
+  padding: 8px;
+}
+
+.crear-subtema button {
+  padding: 8px 15px;
+  background: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.lista-subtemas {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.card-subtema {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.info-subtema {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.nombre {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.estado-badge {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  color: white;
+  text-transform: capitalize;
+}
+
+/* Estados */
+
+.estado-badge.none {
+  background: #9e9e9e;
+}
+
+.estado-badge.pending {
+  background: #ff9800;
+}
+
+.estado-badge.done {
+  background: #4caf50;
+}
+
+.vacio {
+  text-align: center;
+  color: #777;
+  padding: 20px;
+}
+
+.estado-badge.done {
+  color: green;
+  font-weight: bold;
+}
+
+.estado-badge.in-progress {
+  color: orange;
+  font-weight: bold;
+}
+
+.estado-badge.pending, .estado-badge.none {
+  color: gray;
+  font-weight: normal;
+}
+
+.header-tema {
+  margin-bottom: 20px;
+}

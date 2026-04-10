@@ -1,0 +1,50 @@
+<div class="etapas-container">
+
+  <header class="header">
+    <button 
+      [routerLink]="['/empresa', empresaId, 'proyectos']"
+      class="btn-back">
+      ← Volver
+    </button>
+
+    <h1>Etapas del Proyecto</h1>
+  </header>
+
+  <!-- Crear etapa -->
+  <div class="add-card">
+    <input
+      type="text"
+      [(ngModel)]="nuevaEtapaNombre"
+      placeholder="Nombre de la nueva etapa..."
+      (keyup.enter)="crearEtapa()"
+    >
+    <button (click)="crearEtapa()">
+      + Crear
+    </button>
+  </div>
+
+  <!-- Lista etapas -->
+  <div class="grid">
+
+    <div 
+      class="card"
+      *ngFor="let etapa of etapas">
+
+      <div class="card-header">
+        <h3>{{ etapa.etapa_nombre }}</h3>
+        <span class="badge">{{ etapa.estado }}</span>
+      </div>
+
+      <p class="id">ID: #{{ etapa.etapa_id_etapa }}</p>
+
+      <button
+        class="btn-temas"
+        [routerLink]="['/proyecto', proyectoId, empresaId, 'etapa', etapa.etapa_id_etapa, 'temas']">
+        Ver Temas
+      </button>
+
+    </div>
+
+  </div>
+
+</div>

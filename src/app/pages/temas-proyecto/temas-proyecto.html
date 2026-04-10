@@ -1,0 +1,129 @@
+<div class="temas-container">
+
+  <header class="header">
+    <button 
+      type="button"
+      [routerLink]="[
+        '/proyecto',
+        idProyecto,
+        idEmpresa,
+        'etapas'
+      ]"
+      class="btn-back">
+      ← Volver
+    </button>
+
+    <h2>Temas de la Etapa</h2>
+  </header>
+
+  <div class="mensaje-info">
+    <strong>Información:</strong><br>
+    Apreciado usuario, para definir el estado del tema debe tener en cuenta que 
+    todos los componentes del apartado de subtemas deben estar en el estado "Finalizado", para poder que "Temas" quede como calificado, le deseamos una buena experiencia en KEYROS-CHECK.
+  </div>
+
+  <!-- Agregar nuevo tema -->
+  <div class="add-card">
+    <input
+      type="text"
+      placeholder="Nombre del nuevo tema..."
+      [(ngModel)]="nuevoTemaNombre"
+      (keyup.enter)="agregarTema()"
+    />
+
+    <button class="btn-agregar" (click)="agregarTema()">
+      + Agregar
+    </button>
+  </div>
+
+  <!-- Tabla de temas -->
+  <table *ngIf="temas.length > 0; else sinTemas" class="temas-table">
+    <thead>
+      <tr>
+        <th>Tema</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+        <th>Evidencia - Documentación (Drive)</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let tema of temas">
+        
+        <!-- Tema -->
+        <td>{{ tema.nombre }}</td>
+
+        <!-- Estado -->
+        <td>
+          <span *ngIf="tema.isFinalizado" class="badge badge-success">
+            Finalizado ✅
+          </span>
+
+          <select
+            *ngIf="!tema.isFinalizado"
+            [(ngModel)]="tema.estado"
+            (change)="cambiarEstado(tema.id_tema, tema.estado)">
+            <option *ngFor="let estado of estados" [value]="estado">
+              {{ estado | titlecase }}
+            </option>
+          </select>
+        </td>
+
+        <!-- Acciones -->
+        <td>
+          <button
+            [routerLink]="[
+              '/proyecto',
+              idProyecto,
+              idEmpresa,
+              'etapa',
+              idEtapa,
+              'tema',
+              tema.id_tema,
+              'subtemas'
+            ]"
+          >
+            Subtemas
+          </button>
+        </td>
+
+        <!-- Evidencia Drive -->
+        <td>
+          <div class="drive-container">
+
+            <input
+              type="text"
+              placeholder="Pegar enlace de Drive..."
+              [(ngModel)]="tema.enlace_drive"
+              class="drive-input"
+            />
+
+            <button 
+              class="btn-guardar"
+              (click)="guardarEnlaceDrive(tema)">
+              Guardar
+            </button>
+
+            <a 
+              *ngIf="tema.enlace_drive"
+              [href]="tema.enlace_drive"
+              target="_blank"
+              class="btn-drive-open">
+              🔗 Abrir
+            </a>
+
+          </div>
+        </td>
+
+
+      </tr>
+    </tbody>
+  </table>
+
+
+  <!-- Sin temas -->
+  <ng-template #sinTemas>
+    <p class="vacio">No hay temas registrados para esta etapa.</p>
+  </ng-template>
+
+</div>

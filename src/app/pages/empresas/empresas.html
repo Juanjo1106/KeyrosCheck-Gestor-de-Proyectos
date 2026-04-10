@@ -1,0 +1,96 @@
+<div class="dashboard-container">
+
+  <div class="sidebar-info">
+<div class="header-container">
+    <img src="assets/images/logo.png" alt="Keyros Logo" class="logo">
+    <h1>KEYROS-<span>CHECK</span></h1>
+</div>
+
+
+    <p class="subtitle">Gestor y acompañamiento de proyectos Keyros - Versión 1.0</p>
+
+    <div class="status-badge" [ngClass]="{'loading': loading}">
+
+      {{ loading ? '● Sincronizando...' : '● Backend Conectado' }}
+
+    </div>
+
+
+    <div class="form-compacto">
+
+      <input type="text" [(ngModel)]="nuevaEmpresaNombre" (ngModelChange)="aplicarFiltro()" placeholder="Agregar empresa..." (keyup.enter)="crearEmpresa()">
+
+      <button (click)="crearEmpresa()" [disabled]="loading">+</button>
+
+    </div>
+
+  </div>
+
+
+
+  <main class="content-area">
+
+    <div class="header-minimal">
+
+      <h2>Empresas <span>Activas</span></h2>
+
+      <div class="count-badge">{{ empresasFiltradas.length }} registros</div>
+
+    </div>
+
+
+
+    <div class="grid-compacto">
+
+      <div *ngFor="let empresa of empresasFiltradas" class="card-mini">
+
+       
+
+        <div class="card-header">
+
+          <span class="id-tag">#{{ empresa.id_empresa }}</span>
+
+          <div class="dot-active"></div>
+
+        </div>
+
+       
+
+        <div class="card-body">
+
+          <h3>{{ empresa.nombre}}</h3>
+
+        </div>
+
+        
+        <div class="card-footer">
+
+          <button
+
+            [routerLink]="['/empresa', empresa.id_empresa, 'proyectos']"
+
+            class="btn-view">
+
+            VER PROYECTOS
+
+          </button>
+
+        </div>
+
+
+
+      </div>
+
+    </div>
+
+
+
+    <div *ngIf="empresasFiltradas.length === 0 && !loading" class="no-results">
+
+      No se encontraron empresas con ese nombre.
+
+    </div>
+
+  </main>
+
+</div>

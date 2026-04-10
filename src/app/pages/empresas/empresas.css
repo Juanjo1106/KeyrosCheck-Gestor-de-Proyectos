@@ -1,0 +1,292 @@
+:host {
+  --primary: #ea580c;
+  --dark: #0f172a;
+  --light-bg: #f1f5f9;
+  --text-main: #334155;
+}
+
+.dashboard-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--light-bg);
+  font-family: 'Inter', -apple-system, sans-serif;
+}
+
+/* Panel Lateral Izquierdo */
+.sidebar-info {
+  width: 260px;
+  background: var(--dark);
+  color: white;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+}
+/* Contenedor principal */
+.header-container {
+    display: flex;
+    align-items: center; /* Alinea verticalmente el logo y el texto */
+    gap: 15px;           /* Espacio entre el logo y el título */
+    padding: 10px 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Estilos para el logo */
+.logo {
+    height: 50px;       /* Ajusta según el tamaño de tu imagen */
+    width: auto;
+    object-fit: contain;
+}
+
+/* Estilos para el H1 */
+h1 {
+    margin: 0;
+    font-size: 2rem;
+    color: #a5a0a0;        /* Color para "KEYROS-" */
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+/* Estilo para el SPAN (CHECK) */
+h1 span {
+    color: #007bff;     /* Un azul vibrante, puedes cambiarlo por tu color de marca */
+    text-transform: uppercase;
+    position: relative;
+}
+
+/* Opcional: Un detalle visual debajo del texto */
+h1 span::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 4px;
+    background: #f4a64e;
+    border-radius: 2px;
+    margin-top: -2px;
+}
+
+.sidebar-info h1 {
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+}
+
+.sidebar-info h1 span { color: var(--primary); }
+
+.subtitle { font-size: 0.75rem; opacity: 0.6; margin-bottom: 20px; }
+
+.status-badge {
+  font-size: 0.7rem;
+  background: rgba(34, 197, 94, 0.2);
+  color: #4ade80;
+  padding: 5px 10px;
+  border-radius: 20px;
+  width: fit-content;
+  margin-bottom: 40px;
+}
+
+/* Grid y Tarjetas Compactas */
+.content-area { flex: 1; padding: 40px; }
+
+.header-minimal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 15px;
+}
+
+.grid-compacto {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 15px; /* Aquí está lo "pegado" */
+}
+
+.card-mini {
+  background: white;
+  border-radius: 8px;
+  padding: 16px;
+  border: 1px solid #e2e8f0;
+  transition: all 0.2s;
+}
+
+.card-mini:hover {
+  border-color: var(--primary);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.id-tag {
+  font-size: 0.65rem;
+  background: var(--light-bg);
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: #64748b;
+  font-weight: bold;
+}
+
+.card-body h3 {
+  margin: 12px 0;
+  font-size: 0.95rem;
+  color: var(--dark);
+}
+
+.btn-link {
+  background: none;
+  border: none;
+  color: var(--primary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0;
+}
+
+.btn-link svg { fill: var(--primary); }
+
+/* Formulario lateral */
+.form-compacto { display: flex; gap: 5px; }
+
+.form-compacto input {
+  background: #1e293b;
+  border: none;
+  padding: 8px;
+  border-radius: 5px;
+  color: white;
+  font-size: 0.8rem;
+  width: 100%;
+}
+
+.form-compacto button {
+  background: var(--primary);
+  border: none;
+  color: white;
+  padding: 0 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Botón Principal de Acción */
+.btn-auditar {
+  width: 70%;
+  height: 30px;
+  padding: 10px 14px;
+  margin-top: 15px;
+  
+  /* Gradiente moderno que combina con tu logo */
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: #ffffff;
+  
+  /* Bordes y Fuente */
+  border: none;
+  border-radius: 14px;
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+  
+  /* Interactividad */
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  
+  /* Sombra suave */
+  box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.2);
+}
+
+/* Efectos de Movimiento */
+.btn-auditar:hover {
+  background: linear-gradient(135deg, #f26522 0%, #ff8c52 100%); /* Cambia al naranja Keyros */
+  transform: translateY(-3px);
+  box-shadow: 0 10px 15px -3px rgba(242, 101, 34, 0.3);
+}
+
+.btn-auditar:active {
+  transform: translateY(-1px);
+}
+/* Al final de empresas.css solo debe ir esto */
+.empresa-progress-mini {
+  margin: 15px 0;
+}
+.progress-text {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: #64748b;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+.mini-track {
+  width: 100%;
+  height: 4px;
+  background: #f1f5f9;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.mini-fill {
+  height: 100%;
+  background: #22c55e;
+  transition: width 0.3s ease;
+}
+/* Contenedor del botón al final de la tarjeta */
+.card-footer {
+  padding: 1.2rem;
+  background-color: #fcfcfc; /* Un gris casi imperceptible para separar */
+  border-top: 1px solid #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Diseño del botón de Proyectos */
+.btn-view {
+  width: 80%;
+  height: 40px;
+  padding: 8px 14px;
+  background: linear-gradient(135deg, #0d2b62 0%, #1a3cb9 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(23, 162, 184, 0.2);
+}
+
+/* Efectos al pasar el mouse */
+.btn-view:hover {
+  background: linear-gradient(135deg, #efa801 0%,   #c07f08 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(23, 162, 184, 0.3);
+}
+
+/* Efecto cuando se presiona */
+.btn-view:active {
+  transform: translateY(0);
+}
+
+.status-badge.loading {
+  background: #fff7ed;
+  color: #f97316;
+  border: 1px solid #fdba74;
+}
+
+.no-results {
+  text-align: center;
+  padding: 3rem;
+  color: #64748b;
+  font-style: italic;
+}
+

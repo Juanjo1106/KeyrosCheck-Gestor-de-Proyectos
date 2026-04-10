@@ -1,0 +1,77 @@
+<div class="contenedor-subtemas">
+
+  <!-- ======== Encabezado tema padre ======== -->
+  <div class="header-tema">
+    <h2>
+      Tema {{ idTema }} - 
+      <span class="estado-badge" [ngClass]="estadoTema">
+        {{ estadoTema === 'done' ? '✅ Finalizado' 
+           : estadoTema === 'in-progress' ? '⏳ En progreso' 
+           : 'Pendiente' }}
+      </span>
+    </h2>
+  </div>
+
+  <!-- ======== Botón volver ======== -->
+  <div class="header-subtemas">
+    <h2>Subtemas</h2>
+    <button class="btn-volver" (click)="volverATemas()">
+      ← Volver
+    </button>
+  </div>
+
+  <div class="mensaje-info">
+    <strong>Información:</strong>
+    Estimado usuario, para definir el estado del tema como "Finalizado", todos los subtemas se muestran en pantalla deben estar calificados.
+  </div>
+
+  <!-- Crear subtema -->
+  <div class="crear-subtema">
+    <input
+      [(ngModel)]="nuevoSubtema"
+      placeholder="Nuevo subtema"
+      (keyup.enter)="agregarSubtema()"
+    />
+    <button (click)="agregarSubtema()">Agregar</button>
+  </div>
+
+  <!-- Lista -->
+  <div class="lista-subtemas" *ngIf="subtemas.length > 0; else vacio">
+
+    <div *ngFor="let subtema of subtemas" class="card-subtema">
+
+      <div class="info-subtema">
+        <span class="nombre">
+          {{ subtema.subtema_nombre }}
+        </span>
+
+        <span 
+          class="estado-badge"
+          [ngClass]="subtema.estado">
+          {{ subtema.estado === 'done' ? '✅ Finalizado' 
+             : subtema.estado === 'in-progress' ? '⏳ En progreso' 
+             : 'Pendiente' }}
+        </span>
+      </div>
+
+      <div class="acciones">
+        <select
+          [(ngModel)]="subtema.estado"
+          (change)="cambiarEstado(subtema, subtema.estado)">
+          <option value="none">Sin iniciar</option>
+          <option value="pending">Pendiente</option>
+          <option value="done">Finalizado</option>
+        </select>
+      </div>
+
+    </div>
+
+  </div>
+
+  <ng-template #vacio>
+    <div class="vacio">
+      No hay subtemas registrados.
+    </div>
+  </ng-template>
+
+</div>

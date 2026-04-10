@@ -1,0 +1,232 @@
+/* ===== CONTENEDOR PRINCIPAL ===== */
+.temas-container {
+  max-width: 950px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* ===== HEADER ===== */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+/* 🔵 Mensaje informativo */
+.mensaje-info {
+  background: #eef5ff;
+  border-left: 5px solid #2f80ed;
+  padding: 12px 15px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #1f3c88;
+}
+
+.header h2 {
+  margin: 0;
+  color: #2c3e50;
+}
+
+/* ===== BOTÓN VOLVER ===== */
+.btn-back {
+  background: #6c757d;
+  color: white;
+  border: none;
+  padding: 7px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s ease;
+}
+
+.btn-back:hover {
+  background: #545b62;
+}
+
+/* ===== TARJETA AGREGAR ===== */
+.add-card {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.add-card input {
+  flex: 1;
+  padding: 9px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.add-card input:focus {
+  outline: none;
+  border-color: #2f80ed;
+}
+
+/* ===== BOTÓN AGREGAR ===== */
+.btn-agregar {
+  background: #2f80ed;
+  color: white;
+  border: none;
+  padding: 9px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s ease;
+  font-weight: 500;
+}
+
+.btn-agregar:hover {
+  background: #1c60c7;
+}
+
+/* ===== TABLA ===== */
+.temas-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.temas-table thead {
+  background: #2f80ed;
+  color: white;
+}
+
+.temas-table th {
+  padding: 12px;
+  text-align: left;
+  font-weight: 500;
+}
+
+.temas-table td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+.temas-table tbody tr:hover {
+  background: #f5f9ff;
+}
+
+/* ===== SELECT ESTADO ===== */
+select {
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+/* ===== BOTÓN SUBTEMAS ===== */
+.temas-table button {
+  background: #17a2b8;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.temas-table button:hover {
+  background: #117a8b;
+}
+
+/* ===== MENSAJE VACÍO ===== */
+.vacio {
+  text-align: center;
+  margin-top: 20px;
+  color: #777;
+  font-style: italic;
+}
+
+.drive-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.drive-input {
+  width: 220px;
+  padding: 5px 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 13px;
+}
+
+.btn-guardar {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #198754;
+  color: white;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-guardar:hover {
+  background-color: #157347;
+}
+
+.btn-drive-open {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 10px;
+  background-color: #0d6efd;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 13px;
+  transition: 0.2s;
+}
+
+.btn-drive-open:hover {
+  background-color: #0b5ed7;
+}
+
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+
+  .add-card {
+    flex-direction: column;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .temas-table thead {
+    display: none;
+  }
+
+  .temas-table,
+  .temas-table tbody,
+  .temas-table tr,
+  .temas-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .temas-table tr {
+    margin-bottom: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 10px;
+  }
+
+  .temas-table td {
+    border: none;
+    padding: 8px 0;
+  }
+
+}

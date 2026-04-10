@@ -1,0 +1,187 @@
+<div class="proyectos-container">
+
+  <!-- ================= HEADER ================= -->
+  <header class="header">
+    <button routerLink="/empresas" class="btn-back">
+      ← Volver
+    </button>
+
+    <h1>
+      Proyectos de: 
+      <span class="empresa-nombre">{{ nombreEmpresa }}</span>
+    </h1>
+  </header>
+
+
+ <!-- ================= CREAR PROYECTO ================= -->
+<div class="add-project-card">
+
+  <!-- Input nombre proyecto -->
+  <input 
+    type="text"
+    [(ngModel)]="nombreProyecto"
+    placeholder="Nombre del nuevo proyecto..."
+    (keyup.enter)="crearProyecto()"
+    class="input-proyecto"
+  >
+
+  <!-- Selector categoría -->
+  <select 
+    [(ngModel)]="categoriaSeleccionada"
+    class="select-categoria">
+
+    <option value="">Seleccione categoría:</option>
+    <option value="SUPERMERCADO">Supermercado</option>
+    <option value="CARNICERIA">Carnicería</option>
+    <option value="FRIGORIFICO">Frigorífico</option>
+
+  </select>
+
+  <!-- Botón crear -->
+  <button 
+    (click)="crearProyecto()"
+    class="btn-create">
+    CREAR PROYECTO
+  </button>
+
+    <!-- ================= OPCIONES DROPDOWN ================= -->
+    <div class="dropdown">
+
+      <!-- Botón que abre menú -->
+      <button 
+        class="btn-options"
+        type="button"
+        (click)="toggleOpciones()">
+        OPCIONES ▼
+      </button>
+
+      <!-- Menú desplegable -->
+      <div 
+        *ngIf="mostrarOpciones"
+        class="dropdown-menu">
+
+        <!-- Opción reasignar -->
+        <button 
+          (click)="abrirModalReasignar()"
+          class="dropdown-item">
+          🔄 Reasignar proyecto
+        </button>
+
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- ================= GRID PROYECTOS ================= -->
+  <div class="proyectos-grid">
+
+    <div 
+      class="proyecto-card"
+      *ngFor="let proyecto of proyectos">
+
+      <div class="proyecto-info">
+        <h3>{{ proyecto.nombre }}</h3>
+        <p class="dis_id">
+          ID: #{{ proyecto.id_proyecto }}
+        </p>
+      </div>
+
+      <!-- Botón entrar a temas -->
+      <button 
+        [routerLink]="['/proyecto', proyecto.id_proyecto, empresaId, 'etapas']"
+        class="btn-enter">
+        ETAPAS
+      </button>
+
+      <!-- Botón reasignar individual -->
+      <button 
+        (click)="abrirModalReasignar(proyecto.id_proyecto)"
+        class="btn-reassign">
+        Reasignar
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- ================= MODAL REASIGNAR ================= -->
+
+<div 
+  *ngIf="mostrarModalReasignar"
+  class="modal-overlay">
+
+  <div class="modal-container">
+
+    <h3 class="modal-title">
+      Reasignar Proyecto
+    </h3>
+
+    <!-- Selector proyecto (solo si no viene del botón individual) -->
+    <div 
+      *ngIf="!proyectoSeleccionado"
+      class="form-group">
+
+      <label>Proyecto:</label>
+
+      <select 
+        [(ngModel)]="proyectoSeleccionado"
+        class="form-select">
+
+        <option 
+          *ngFor="let p of proyectos"
+          [value]="p.id_proyecto">
+          {{ p.nombre }}
+        </option>
+
+      </select>
+    </div>
+
+
+    <!-- Selector empresa destino -->
+    <div class="form-group">
+
+      <label>Empresa destino:</label>
+
+      <select 
+        [(ngModel)]="empresaDestino"
+        class="form-select">
+
+        <option [ngValue]="null">
+          Seleccione empresa
+        </option>
+
+        <option 
+          *ngFor="let e of empresas"
+          [ngValue]="e.id_empresa">
+          {{ e.nombre }}
+        </option>
+
+      </select>
+
+    </div>
+
+
+    <!-- Botones acción modal -->
+    <div class="modal-actions">
+
+      <button 
+        (click)="confirmarReasignacion()"
+        class="btn-confirm">
+        Confirmar
+      </button>
+
+      <button 
+        (click)="cerrarModalReasignar()"
+        class="btn-cancel">
+        Cancelar
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
