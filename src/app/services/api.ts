@@ -7,8 +7,9 @@ import { Observable, tap } from 'rxjs';
 })
 export class ApiService {
 
-  private readonly PROJECTS_URL = 'https://factional-aja-gangly.ngrok-free.dev/projects';
-  private readonly AUTH_URL = 'https://factional-aja-gangly.ngrok-free.dev/auth';
+  // Cambia las líneas 10 y 11 para que queden así:
+  private readonly PROJECTS_URL = 'http://localhost:3000/projects';
+  private readonly AUTH_URL = 'http://localhost:3000/auth';
 
   constructor(private http: HttpClient) {}
 
@@ -165,16 +166,12 @@ crearEtapa(nombre: string, idProyecto: number): Observable<any> {
   // 📌 TEMAS
   // =====================================================
 
-    getTemas(idEtapa: number, idEmpresa: number, idProyecto: number): Observable<any[]> {
-      const params = new HttpParams()
-        .set('id_empresa', idEmpresa.toString())
-        .set('id_proyecto', idProyecto.toString());
-
-      return this.http.get<any[]>(
-        `${this.PROJECTS_URL}/etapas/${idEtapa}/temas?id_empresa=${idEmpresa}&id_proyecto=${idProyecto}`,
-        { headers: this.getHeaders()} // 🔹 solo params, no repetir en URL
-      );
-    }
+  getTemas(idEtapa: number, idEmpresa: number, idProyecto: number): Observable<any[]> {
+    return this.http.get<any[]>(
+      `${this.PROJECTS_URL}/etapas/${idEtapa}/temas?id_empresa=${idEmpresa}&id_proyecto=${idProyecto}`,
+      { headers: this.getHeaders() } // 🌟 Asegúrate de que tenga las llaves { headers: ... }
+    );
+  }
 
     crearTema(nombre: string, idProyecto: number, idEtapa: number): Observable<any> {
       return this.http.post(
