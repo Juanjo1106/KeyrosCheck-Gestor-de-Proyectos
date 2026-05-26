@@ -5,7 +5,9 @@ import { EtapasComponent } from './pages/etapas/etapas';
 import { TemasProyecto } from './pages/temas-proyecto/temas-proyecto';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'empresas', pathMatch: 'full' },
+  // Dejamos la ruta raíz vacía para que cargue el AppComponent solo, sin redirigir de inmediato
+  { path: '', component: EmpresasComponent }, // O puedes quitar esta línea si manejas el renderizado con ngIf en app.html
+  
   { path: 'empresas', component: EmpresasComponent },
   { path: 'empresa/:idEmpresa/proyectos', component: ProyectosComponent },
   { path: 'proyecto/:idProyecto/:idEmpresa/etapas', component: EtapasComponent },

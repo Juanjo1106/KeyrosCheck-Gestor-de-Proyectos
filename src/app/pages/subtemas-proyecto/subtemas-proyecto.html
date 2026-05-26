@@ -1,41 +1,37 @@
 <div class="contenedor-subtemas">
 
-  <!-- ======== Encabezado tema padre ======== -->
   <div class="header-tema">
     <h2>
-      Tema {{ idTema }} - 
+      Tema {{ idTema }}
       <span class="estado-badge" [ngClass]="estadoTema">
-        {{ estadoTema === 'done' ? '✅ Finalizado' 
-           : estadoTema === 'in-progress' ? '⏳ En progreso' 
+        {{ estadoTema === 'done' ? 'Finalizado' 
+           : estadoTema === 'in-progress' || estadoTema === 'pending' ? 'En progreso' 
            : 'Pendiente' }}
       </span>
     </h2>
   </div>
 
-  <!-- ======== Botón volver ======== -->
   <div class="header-subtemas">
-    <h2>Subtemas</h2>
+    <h2>Subtemas de la etapa</h2>
     <button class="btn-volver" (click)="volverATemas()">
-      ← Volver
+      ← Volver a Temas
     </button>
   </div>
 
   <div class="mensaje-info">
-    <strong>Información:</strong>
-    Estimado usuario, para definir el estado del tema como "Finalizado", todos los subtemas se muestran en pantalla deben estar calificados.
+    <strong>Requerimiento:</strong>
+    Para definir el estado de este tema como "Finalizado", todos los subtemas listados en pantalla deben ser calificados y completados con éxito.
   </div>
 
-  <!-- Crear subtema -->
   <div class="crear-subtema">
     <input
       [(ngModel)]="nuevoSubtema"
-      placeholder="Nuevo subtema"
+      placeholder="Escribe un nuevo subtema para este tema..."
       (keyup.enter)="agregarSubtema()"
     />
     <button (click)="agregarSubtema()">Agregar</button>
   </div>
 
-  <!-- Lista -->
   <div class="lista-subtemas" *ngIf="subtemas.length > 0; else vacio">
 
     <div *ngFor="let subtema of subtemas" class="card-subtema">
@@ -45,12 +41,10 @@
           {{ subtema.subtema_nombre }}
         </span>
 
-        <span 
-          class="estado-badge"
-          [ngClass]="subtema.estado">
-          {{ subtema.estado === 'done' ? '✅ Finalizado' 
-             : subtema.estado === 'in-progress' ? '⏳ En progreso' 
-             : 'Pendiente' }}
+        <span class="estado-badge" [ngClass]="subtema.estado">
+          {{ subtema.estado === 'done' ? 'Finalizado' 
+             : subtema.estado === 'pending' ? 'Pendiente' 
+             : 'Sin iniciar' }}
         </span>
       </div>
 
@@ -70,7 +64,7 @@
 
   <ng-template #vacio>
     <div class="vacio">
-      No hay subtemas registrados.
+      No hay subtemas registrados para este tema. ¡Agrega el primero arriba!
     </div>
   </ng-template>
 

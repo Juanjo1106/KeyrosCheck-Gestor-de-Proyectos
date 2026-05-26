@@ -1,123 +1,221 @@
-.contenedor-subtemas {
-  max-width: 900px;
-  margin: auto;
-  padding: 20px;
+:host {
+  display: block;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  color: #334155;
+  background-color: #f8fafc;
+  min-height: 100vh;
+  padding: 2rem 1rem;
 }
 
+.contenedor-subtemas {
+  max-width: 850px;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+}
+
+/* ======== Encabezado Tema Padre ======== */
+.header-tema {
+  border-bottom: 2px solid #f1f5f9;
+  padding-bottom: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.header-tema h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1e293b;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0;
+}
+
+/* ======== Botón Volver y Título Sección ======== */
 .header-subtemas {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 15px;
+  margin-bottom: 1.5rem;
+}
+
+.header-subtemas h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #475569;
+  margin: 0;
 }
 
 .btn-volver {
-  background: #444;
-  color: white;
-  border: none;
-  padding: 6px 14px;
-  border-radius: 6px;
+  background-color: #ffffff;
+  color: #64748b;
+  border: 1px solid #cbd5e1;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 500;
   cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
+.btn-volver:hover {
+  background-color: #f1f5f9;
+  color: #1e293b;
+  border-color: #94a3b8;
+}
+
+/* ======== Mensaje de Info Informativo ======== */
 .mensaje-info {
-  background: #f5f5f5;
-  padding: 10px;
-  border-left: 4px solid #1976d2;
-  margin-bottom: 15px;
-  font-size: 14px;
+  background-color: #eff6ff;
+  border-left: 4px solid #3b82f6;
+  color: #1e40af;
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 2rem;
 }
 
+/* ======== Formulario Crear Subtema ======== */
 .crear-subtema {
   display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
 }
 
 .crear-subtema input {
   flex: 1;
-  padding: 8px;
+  padding: 0.75rem 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  font-size: 1rem;
+  color: #334155;
+  transition: all 0.2s ease;
+  background-color: #f8fafc;
+}
+
+.crear-subtema input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
 }
 
 .crear-subtema button {
-  padding: 8px 15px;
-  background: #1976d2;
-  color: white;
+  background-color: #1e293b;
+  color: #ffffff;
   border: none;
-  border-radius: 6px;
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.95rem;
   cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
+.crear-subtema button:hover {
+  background-color: #0f172a;
+}
+
+/* ======== Lista de Tarjetas (Cards) ======== */
 .lista-subtemas {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 1rem;
 }
 
 .card-subtema {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: white;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  padding: 1.25rem 1.5rem;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+}
+
+.card-subtema:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  transform: translateY(-1px);
 }
 
 .info-subtema {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 1.25rem;
+  flex: 1;
 }
 
-.nombre {
-  font-weight: 600;
-  font-size: 16px;
+.info-subtema .nombre {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #334155;
 }
 
+/* ======== Badges Dinámicos de Estado ======== */
 .estado-badge {
-  padding: 4px 10px;
-  border-radius: 20px;
-  font-size: 12px;
-  color: white;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.75rem;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: 600;
   text-transform: capitalize;
 }
 
-/* Estados */
+/* Colores según el estado usando tus ngClass */
+.estado-badge.done {
+  background-color: #dcfce7;
+  color: #15803d;
+}
+
+.estado-badge.pending, .estado-badge.in-progress {
+  background-color: #fef9c3;
+  color: #a16207;
+}
 
 .estado-badge.none {
-  background: #9e9e9e;
+  background-color: #f1f5f9;
+  color: #64748b;
 }
 
-.estado-badge.pending {
-  background: #ff9800;
+/* ======== Selector Acciones Acciones ======== */
+.acciones select {
+  padding: 0.5rem 2rem 0.5rem 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #475569;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23475569'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1rem;
 }
 
-.estado-badge.done {
-  background: #4caf50;
+.acciones select:focus {
+  outline: none;
+  border-color: #94a3b8;
+  box-shadow: 0 0 0 3px rgba(148, 163, 184, 0.1);
 }
 
+/* ======== Estado Vacío ======== */
 .vacio {
   text-align: center;
-  color: #777;
-  padding: 20px;
-}
-
-.estado-badge.done {
-  color: green;
-  font-weight: bold;
-}
-
-.estado-badge.in-progress {
-  color: orange;
-  font-weight: bold;
-}
-
-.estado-badge.pending, .estado-badge.none {
-  color: gray;
-  font-weight: normal;
-}
-
-.header-tema {
-  margin-bottom: 20px;
+  padding: 3rem 1rem;
+  color: #94a3b8;
+  font-size: 1.1rem;
+  border: 2px dashed #e2e8f0;
+  border-radius: 12px;
+  background-color: #f8fafc;
 }
