@@ -1,310 +1,354 @@
-/* =========================
-   CONTENEDOR GENERAL
-========================= */
+:host {
+  display: block;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: #f8fafc;
+  min-height: 100vh;
+  color: #1e293b;
+}
 
 .proyectos-container {
-  padding: 30px;
-  max-width: 1100px;
-  margin: auto;
-  font-family: 'Segoe UI', sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
 }
 
-
-
-/* =========================
-   HEADER
-========================= */
-
+/* ================= HEADER ================= */
 .header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-bottom: 25px;
-}
-
-.header h1 {
-  font-size: 22px;
-  font-weight: 600;
-}
-
-.empresa-nombre {
-  color: #2c3e50;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 1rem;
 }
 
 .btn-back {
-  background: #ecf0f1;
-  border: none;
-  padding: 8px 14px;
-  border-radius: 6px;
+  background-color: #ffffff;
+  color: #64748b;
+  border: 1px solid #cbd5e1;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 500;
   cursor: pointer;
-  transition: 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .btn-back:hover {
-  background: #dcdde1;
+  background-color: #f1f5f9;
+  color: #0f172a;
+  border-color: #94a3b8;
 }
 
+.header h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
 
+.header h1 .empresa-nombre {
+  color: #2563eb; /* Azul corporativo */
+}
 
-/* =========================
-   CREAR PROYECTO
-========================= */
-
+/* ================= BARRA CREAR PROYECTO (Alineada y Limpia) ================= */
 .add-project-card {
+  background: #ffffff;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 30px;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
 }
 
 .input-proyecto {
-  flex: 1;
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+  flex: 2;
+  padding: 0.65rem 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: #0f172a;
+  transition: all 0.2s ease;
 }
 
-.btn-create {
-  background: #3498db;
-  color: white;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: 0.2s ease;
-}
-
-.btn-create:hover {
-  background: #2980b9;
+.input-proyecto:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
 }
 
 .select-categoria {
-  border-radius: 12px;
-  padding: 10px 14px;
-  font-size: 15px;
-  border: 1px solid #dcdcdc;
-  transition: all 0.2s ease-in-out;
+  flex: 1;
+  padding: 0.65rem 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #334155;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: border-color 0.2s;
 }
 
 .select-categoria:focus {
-  border-color: #0d6efd;
-  box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.15);
+  outline: none;
+  border-color: #2563eb;
 }
 
-.add-project-card {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
+.btn-create {
+  background-color: #2563eb;
+  color: #ffffff;
+  border: none;
+  padding: 0.65rem 1.25rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.2s;
 }
 
-/* =========================
-   DROPDOWN OPCIONES
-========================= */
+.btn-create:hover {
+  background-color: #1d4ed8;
+}
 
+/* Dropdown Opciones */
 .dropdown {
   position: relative;
 }
 
 .btn-options {
-  background: #2c3e50;
-  color: white;
-  border: none;
-  padding: 10px 14px;
-  border-radius: 6px;
+  background-color: #f1f5f9;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+  padding: 0.65rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.85rem;
   cursor: pointer;
-  transition: 0.2s ease;
+  white-space: nowrap;
+  transition: all 0.2s ease;
 }
 
 .btn-options:hover {
-  background: #34495e;
+  background-color: #e2e8f0;
+  color: #0f172a;
 }
 
 .dropdown-menu {
   position: absolute;
-  top: 45px;
   right: 0;
-  background: white;
+  top: calc(100% + 0.5rem);
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
   border-radius: 8px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  padding: 8px 0;
-  min-width: 200px;
-  z-index: 100;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+  padding: 0.4rem;
+  z-index: 50;
+  min-width: 190px;
 }
 
 .dropdown-item {
   width: 100%;
-  padding: 10px 15px;
+  text-align: left;
   background: none;
   border: none;
-  text-align: left;
+  padding: 0.55rem 0.75rem;
+  font-size: 0.88rem;
+  color: #475569;
   cursor: pointer;
-  transition: 0.2s ease;
+  border-radius: 6px;
+  transition: background-color 0.15s;
 }
 
 .dropdown-item:hover {
-  background: #f4f6f8;
+  background-color: #f1f5f9;
+  color: #0f172a;
 }
 
-
-
-/* =========================
-   GRID PROYECTOS
-========================= */
-
+/* ================= GRID DE PROYECTOS ================= */
 .proyectos-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
 }
 
 .proyecto-card {
   background: #ffffff;
-  padding: 20px;
+  border: 1px solid #e2e8f0;
   border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-  transition: 0.2s ease;
+  padding: 1.25rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  gap: 1.25rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .proyecto-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.04);
 }
 
 .proyecto-info h3 {
-  margin-bottom: 8px;
-  font-size: 18px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin: 0 0 0.35rem 0;
 }
 
 .dis_id {
-  font-size: 13px;
-  color: #888;
+  font-family: monospace;
+  font-size: 0.75rem;
+  color: #94a3b8;
+  background: #f8fafc;
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  display: inline-block;
+  margin: 0;
 }
 
-
-
-/* =========================
-   BOTONES PROYECTO
-========================= */
-
+/* Botones dentro de la card */
 .btn-enter {
-  background: #41aaf0;
-  color: white;
+  background-color: #0f172a; /* Color oscuro premium */
+  color: #ffffff;
   border: none;
-  padding: 8px;
+  padding: 0.6rem 0;
   border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.3px;
   cursor: pointer;
-  margin-top: 10px;
-  transition: 0.2s ease;
+  width: 100%;
+  transition: background-color 0.15s;
 }
 
 .btn-enter:hover {
-  background: #4046fc;
+  background-color: #1e293b;
 }
 
 .btn-reassign {
-  background: #1259f3;
-  color: white;
+  background: none;
   border: none;
-  padding: 8px;
-  border-radius: 6px;
+  color: #64748b;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-decoration: underline;
   cursor: pointer;
-  margin-top: 8px;
-  transition: 0.2s ease;
+  align-self: center;
+  transition: color 0.15s;
 }
 
 .btn-reassign:hover {
-  background: #03009f;
+  color: #2563eb;
 }
 
-
-
-/* =========================
-   MODAL
-========================= */
-
+/* ================= MODAL DE REASIGNACIÓN (INTERFAZ MODERNA) ================= */
 .modal-overlay {
   position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.45);
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(4px); /* Desenfoque elegante de fondo */
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 200;
-  backdrop-filter: blur(4px);
+  z-index: 999;
 }
 
 .modal-container {
-  background: white;
-  padding: 25px;
-  border-radius: 12px;
-  width: 380px;
-  animation: fadeIn 0.2s ease-in-out;
+  background: #ffffff;
+  width: 100%;
+  max-width: 440px;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
 }
 
 .modal-title {
-  margin-bottom: 20px;
-  text-align: center;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 0.5rem;
 }
 
 .form-group {
-  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+}
+
+.form-group label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .form-select {
   width: 100%;
-  padding: 8px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #0f172a;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.form-select:focus {
+  outline: none;
+  border-color: #2563eb;
 }
 
 .modal-actions {
   display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-  margin-top: 20px;
+  gap: 0.75rem;
+  margin-top: 2rem;
 }
 
 .btn-confirm {
-  background: #27ae60;
-  color: white;
+  flex: 1.2;
+  background-color: #0f172a;
+  color: #ffffff;
   border: none;
-  padding: 8px 14px;
-  border-radius: 6px;
+  padding: 0.7rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
   cursor: pointer;
+  transition: background-color 0.15s;
 }
 
 .btn-confirm:hover {
-  background: #2ecc71;
+  background-color: #1e293b;
 }
 
 .btn-cancel {
-  background: #bdc3c7;
-  border: none;
-  padding: 8px 14px;
-  border-radius: 6px;
+  flex: 1;
+  background-color: #ffffff;
+  color: #64748b;
+  border: 1px solid #cbd5e1;
+  padding: 0.7rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
   cursor: pointer;
+  transition: all 0.15s;
 }
 
 .btn-cancel:hover {
-  background: #aeb6bf;
-}
-
-
-
-/* =========================
-   ANIMACIÓN
-========================= */
-
-@keyframes fadeIn {
-  from {
-    transform: scale(0.95);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
+  background-color: #f1f5f9;
+  color: #0f172a;
 }
