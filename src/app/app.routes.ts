@@ -3,20 +3,24 @@ import { EmpresasComponent } from './pages/empresas/empresas';
 import { ProyectosComponent } from './pages/proyectos/proyectos';
 import { EtapasComponent } from './pages/etapas/etapas';
 import { TemasProyecto } from './pages/temas-proyecto/temas-proyecto';
-
+// Cambia esto en la línea 6 de tu app.routes.ts
+import { authGuard } from './guards/auth-guard';
 export const routes: Routes = [
-  // Dejamos la ruta raíz vacía para que cargue el AppComponent solo, sin redirigir de inmediato
-  { path: '', component: EmpresasComponent }, // O puedes quitar esta línea si manejas el renderizado con ngIf en app.html
+  // 1. Quita el component de la raíz. Deja que redirija a empresas, pero el Guard lo va a frenar
+  { path: '', redirectTo: 'empresas', pathMatch: 'full' }, 
   
-  { path: 'empresas', component: EmpresasComponent },
-  { path: 'empresa/:idEmpresa/proyectos', component: ProyectosComponent },
-  { path: 'proyecto/:idProyecto/:idEmpresa/etapas', component: EtapasComponent },
-  { path: 'proyecto/:idProyecto/:idEmpresa/etapa/:idEtapa/temas', component: TemasProyecto },
+  // 2. Protege todas tus rutas internas con el guardián
+  { path: 'empresas', component: EmpresasComponent, canActivate: [authGuard] },
+  { path: 'empresa/:idEmpresa/proyectos', component: ProyectosComponent, canActivate: [authGuard] },
+  { path: 'proyecto/:idProyecto/:idEmpresa/etapas', component: EtapasComponent, canActivate: [authGuard] },
+  { path: 'proyecto/:idProyecto/:idEmpresa/etapa/:idEtapa/temas', component: TemasProyecto, canActivate: [authGuard] },
   { 
     path: 'proyecto/:idProyecto/:idEmpresa/etapa/:idEtapa/tema/:idTema/subtemas',
+    canActivate: [authGuard],
     loadComponent: () =>
       import('./pages/subtemas-proyecto/subtemas-proyecto')
         .then(m => m.SubtemasProyecto)
   },
+  
   { path: '**', redirectTo: 'empresas' }
 ];

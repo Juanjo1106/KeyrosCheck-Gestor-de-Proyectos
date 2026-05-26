@@ -19,13 +19,17 @@ export class AppComponent implements OnInit {
   
 
   constructor(
-    private api: ApiService, 
-    private router: Router,
-    private cdr: ChangeDetectorRef
-  ) {
-    // Verificación inicial sólida
-    this.checkAuth();
-  }
+      private api: ApiService, 
+      private router: Router,
+      private cdr: ChangeDetectorRef
+    ) {
+      // 1. Forzamos la limpieza del almacenamiento para que no recuerde sesiones previas al abrir la URL
+      localStorage.removeItem('access_token');
+      localStorage.removeItem('refresh_token');
+
+      // 2. Evaluamos el estado (ahora dará false porque los acabamos de borrar)
+      this.checkAuth();
+    }
 
   ngOnInit() {
     if (this.isLoggedIn) {
